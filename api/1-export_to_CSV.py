@@ -3,6 +3,7 @@
 #Using what you did in the task #0, extend your Python script to export data in the CSV format.
 
 import requests
+import csv
 
 class EmployeeToDoList():
     def todoList(self, employee_id):
@@ -23,8 +24,21 @@ class EmployeeToDoList():
         for task in done_tasks:
             print(f"\t {task['title']}")
             
+        USER_ID = employee_id
+        USERNAME = employee['username']
+        
+        filename = f'{USER_ID}.csv'
+        with open(filename, mode='w', newline='', encoding='utf-8') as csvfile:
+            writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+            for tasks in employee_tasks:    
+                TASK_COMPLETED_STATUS = str(tasks['completed'])
+                TASK_TITLE = task['title']
+                writer.writerow([USER_ID, USERNAME, TASK_COMPLETED_STATUS, TASK_TITLE])
+        
+            
         # Replace 1 with any valid employee ID
             
 if __name__ == "__main__":
     emp = EmployeeToDoList()
     emp.todoList(1)     
+    
