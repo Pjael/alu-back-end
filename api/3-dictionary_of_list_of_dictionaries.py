@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-#Using what you did in the task #0, extend your Python script to export data in the JSON format.
 
-import requests
+''' Using what you did in the task #0, extend your Python script to export data in the JSON format. '''
+
 import json
+import requests
+
 
 def export_all_employees_to_json():
     users = requests.get('https://jsonplaceholder.typicode.com/users').json()
