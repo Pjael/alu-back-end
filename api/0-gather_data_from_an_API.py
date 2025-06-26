@@ -20,7 +20,9 @@ class EmployeeToDoList():
         print(f"Employee {EMPLOYEE_NAME} is done with tasks({NUMBER_OF_DONE_TASKS}/{TOTAL_NUMBER_OF_TASKS}):")
         for task in done_tasks:
             print(f"\t {task['title']}")
-                     
+            
+        # Replace 1 with any valid employee ID
+            
 if __name__ == "__main__":
     emp = EmployeeToDoList()
     emp.todoList(1)     
