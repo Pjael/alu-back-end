@@ -1,7 +1,7 @@
+#!/usr/bin/python3
 
-    #!/usr/bin/python3
-
-"""Using what you did in the task #0, extend your Python script to export data in the CSV format."""
+"""Using what you did in the task #0, extend your Python script to export data
+in the CSV format."""
 
 import csv
 import requests

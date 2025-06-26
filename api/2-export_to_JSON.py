@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
-"""Using what you did in the task #0, extend your Python script to export data in the JSON format."""
+"""Using what you did in the task #0, extend your Python script to export data
+in the JSON format."""
 
 import json
 import requests
@@ -43,4 +44,3 @@ class EmployeeToDoList:
 if __name__ == "__main__":
     emp = EmployeeToDoList()
     emp.todo_list(1)
-    
