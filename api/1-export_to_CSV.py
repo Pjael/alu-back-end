@@ -1,45 +1,59 @@
-#!/usr/bin/python3
 
-''' Using what you did in the task #0, extend your Python script to export data in the CSV format. '''
+    #!/usr/bin/python3
+
+"""Using what you did in the task #0, extend your Python script to export data in the CSV format."""
 
 import csv
 import requests
 
 
-class EmployeeToDoList():
-    def todoList(self, employee_id):
-        users = requests.get('https://jsonplaceholder.typicode.com/users').json()
-        todos = requests.get('https://jsonplaceholder.typicode.com/todos').json()
-        employee = next((user for user in users if user['id'] == employee_id), None)
+class EmployeeToDoList:
+    def todo_list(self, employee_id):
+        users = requests.get(
+            'https://jsonplaceholder.typicode.com/users'
+        ).json()
+        todos = requests.get(
+            'https://jsonplaceholder.typicode.com/todos'
+        ).json()
+        employee = next(
+            (user for user in users if user['id'] == employee_id), None
+        )
         if not employee:
-            print("Employee not found")
-            return
-        
-        EMPLOYEE_NAME = employee['name']
-        employee_tasks = [task for task in todos if task['userId'] == employee_id]
-        TOTAL_NUMBER_OF_TASKS = len(employee_tasks)
-        NUMBER_OF_DONE_TASKS = len([task for task in employee_tasks if task['completed']])
-        
-        done_tasks = [task for task in employee_tasks if task['completed']]
-        print(f"Employee {EMPLOYEE_NAME} is done with tasks({NUMBER_OF_DONE_TASKS}/{TOTAL_NUMBER_OF_TASKS}):")
+            return "Employee not found"
+
+        employee_name = employee['name']
+        employee_tasks = [
+            task for task in todos if task['userId'] == employee_id
+        ]
+        total_number_of_tasks = len(employee_tasks)
+        number_of_done_tasks = len(
+            [task for task in employee_tasks if task['completed']]
+        )
+
+        done_tasks = [
+            task for task in employee_tasks if task['completed']
+        ]
+        print(
+            f"Employee {employee_name} is done with tasks"
+            f"({number_of_done_tasks}/{total_number_of_tasks}):"
+        )
         for task in done_tasks:
             print(f"\t {task['title']}")
-            
-        USER_ID = employee_id
-        USERNAME = employee['username']
-        
-        filename = f'{USER_ID}.csv'
+
+        user_id = employee_id
+        username = employee['username']
+
+        filename = f"{user_id}.csv"
         with open(filename, mode='w', newline='', encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-            for tasks in employee_tasks:    
-                TASK_COMPLETED_STATUS = str(tasks['completed'])
-                TASK_TITLE = task['title']
-                writer.writerow([USER_ID, USERNAME, TASK_COMPLETED_STATUS, TASK_TITLE])
-        
-            
-        # Replace 1 with any valid employee ID
-            
+            for task in employee_tasks:
+                task_completed_status = str(task['completed'])
+                task_title = task['title']
+                writer.writerow(
+                    [user_id, username, task_completed_status, task_title]
+                )
+
+
 if __name__ == "__main__":
     emp = EmployeeToDoList()
-    emp.todoList(1)     
-    
+    emp.todo_list(1)
