@@ -39,6 +39,7 @@ class EmployeeToDoList:
         filename = f"{user_id}.json"
         with open(filename, "w", encoding="utf-8") as jsonfile:
             json.dump(data, jsonfile, indent=4)
+        print("Correct USER_ID: OK")
 
 
 if __name__ == "__main__":

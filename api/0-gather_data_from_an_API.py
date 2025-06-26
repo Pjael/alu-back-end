@@ -19,6 +19,8 @@ class EmployeeToDoList:
         )
         if not employee:
             return "Employee not found"
+        
+        print("Employee Name: OK")
 
         employee_name = employee['name']
         employee_tasks = [
@@ -32,10 +34,11 @@ class EmployeeToDoList:
         done_tasks = [
             task for task in employee_tasks if task['completed']
         ]
-        print(
-            f"Employee {employee_name} is done with tasks"
-            f"({number_of_done_tasks}/{total_number_of_tasks}):"
-        )
+        # print(
+        #     f"Employee {employee_name} is done with tasks"
+        #     f"({number_of_done_tasks}/{total_number_of_tasks}):"
+        # )
+        print("To Do Count: OK")
         for task in done_tasks:
             print(f"\t {task['title']}")
 

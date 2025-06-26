@@ -33,6 +33,7 @@ def export_all_employees_to_json():
 
     with open("todo_all_employees.json", "w", encoding="utf-8") as jsonfile:
         json.dump(data, jsonfile, indent=4)
+    print("All users found: OK")
 
 
 if __name__ == "__main__":

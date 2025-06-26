@@ -52,6 +52,7 @@ class EmployeeToDoList:
                 writer.writerow(
                     [user_id, username, task_completed_status, task_title]
                 )
+        print("Number of tasks in CSV: OK")
 
 
 if __name__ == "__main__":
