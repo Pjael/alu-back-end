@@ -8,9 +8,9 @@ import sys
 def get_employee_todo_progress(emp_id):
     """Fetch and display TODO list progress for a given employee ID."""
     base_url = "https://jsonplaceholder.typicode.com"
-    user = requests.get(f"{base_url}/users/{emp_id}").json()
+    user = requests.get("{}/users/{}".format(base_url, emp_id)).json()
     todos = requests.get(
-        f"{base_url}/todos", params={"userId": emp_id}
+        "{}/todos".format(base_url), params={"userId": emp_id}
     ).json()
 
     employee_name = user.get("name")
@@ -18,13 +18,11 @@ def get_employee_todo_progress(emp_id):
     done_tasks = [task for task in todos if task.get("completed")]
     done_count = len(done_tasks)
 
-    print(
-        f"Employee {employee_name} is done with tasks"
-        f"({done_count}/{total_tasks}):"
-    )
+    print("Employee {} is done with tasks({}/{}):".format(
+        employee_name, done_count, total_tasks))
 
     for task in done_tasks:
-        print("\t " + task.get("title"))
+        print("\t {}".format(task.get("title")))
 
 
 if __name__ == "__main__":
